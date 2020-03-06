@@ -53,6 +53,7 @@ public class SetupActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private ProgressBar setUpProgessBar;
     private FirebaseFirestore firebaseFirestore;
+    private boolean isChanged = false;
 
 
     @Override
@@ -60,19 +61,60 @@ public class SetupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup);
 
+
+        final Toolbar setuptoolbar = findViewById(R.id.setuptoolbar);
+        setSupportActionBar(setuptoolbar);
+        getSupportActionBar().setTitle("Account Setup");
+
         mAuth = FirebaseAuth.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
-
         firebaseFirestore = FirebaseFirestore.getInstance();
-        
+
+        user_id = mAuth.getCurrentUser().getUid();
+
         setupName = findViewById(R.id.setupname);
         setupBtn = findViewById(R.id.setupbtn);
         setupImage = findViewById(R.id.profile_image);
         setUpProgessBar = findViewById(R.id.setupprogressBar);
 
-        Toolbar setuptoolbar = findViewById(R.id.setuptoolbar);
-        setSupportActionBar(setuptoolbar);
-        getSupportActionBar().setTitle("Account Setup");
+
+        setUpProgessBar.setVisibility(View.VISIBLE);
+        setupBtn.setEnabled(false);
+
+        // Retrieving data from firestore to account settings
+        firebaseFirestore.collection("Users").document(user_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+
+                    if(task.isSuccessful()){
+                            if(task.getResult().exists()){
+                                String name = task.getResult().getString("name");
+                                String image = task.getResult().getString("image");
+
+                                mainImageURI = Uri.parse(image);
+
+
+                                setupName.setText(name);
+
+                                RequestOptions rplaceholder = new RequestOptions();
+                                rplaceholder.placeholder(R.drawable.avatar);
+
+                                Glide.with(SetupActivity.this).setDefaultRequestOptions(rplaceholder).load(image).into(setupImage);
+
+                            }
+
+                    }
+                    else{
+                        String e = task.getException().getMessage();
+                        Toast.makeText(SetupActivity.this, "Retrieve error"+e, Toast.LENGTH_SHORT).show();
+
+                    }
+                    setUpProgessBar.setVisibility(View.INVISIBLE);
+                    setupBtn.setEnabled(true);
+            }
+        });
+
+
 
 
         setupImage.setOnClickListener(new View.OnClickListener() {
@@ -92,15 +134,17 @@ public class SetupActivity extends AppCompatActivity {
                         }
                     }
                 });
+
+
+        // setup button
         setupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    final String user_name  = setupName.getText().toString();
+                final String user_name  = setupName.getText().toString();
+                setUpProgessBar.setVisibility(View.VISIBLE);
+                if(isChanged){
                     if(!TextUtils.isEmpty(user_name) && mainImageURI!= null)
                     {
-                        final String user_id = mAuth.getCurrentUser().getUid();
-                        setUpProgessBar.setVisibility(View.VISIBLE);
-
                         final StorageReference image_path = storageReference.child("profile_images").child(user_id +".jpg");
                         image_path.putFile(mainImageURI).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
@@ -111,11 +155,15 @@ public class SetupActivity extends AppCompatActivity {
                                         SaveToFirestore(uri,user_name,user_id);
                                     }
                                 });
-                                setUpProgessBar.setVisibility(View.INVISIBLE);
+
                             }
                         });
 
                     }
+                }else{
+                    SaveToFirestore(null,user_name,user_id);
+
+                }
             }
         });
     }
@@ -148,11 +196,12 @@ public class SetupActivity extends AppCompatActivity {
                 }
             }
         });
+        setUpProgessBar.setVisibility(View.INVISIBLE);
 
     }
 
 
-    
+
 
 
 
@@ -184,6 +233,7 @@ public class SetupActivity extends AppCompatActivity {
 
                 mainImageURI = result.getUri();
                 setupImage.setImageURI(mainImageURI);
+                isChanged = true;
 
 
             } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
