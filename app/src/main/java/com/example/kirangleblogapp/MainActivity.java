@@ -63,6 +63,10 @@ public class MainActivity extends AppCompatActivity {
                 logout();
                 return true;
 
+            case R.id.action_settings_btn :
+                gotoSettings();
+                return true;
+
 
             default:
                 return false;
@@ -70,6 +74,12 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    private void gotoSettings() {
+        Intent loginintent = new Intent(MainActivity.this , SetupActivity.class);
+        startActivity(loginintent);
+        finish();
     }
 
     private void logout() {
