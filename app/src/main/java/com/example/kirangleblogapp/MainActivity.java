@@ -8,7 +8,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -16,17 +18,29 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar mainToolbar;
     private FirebaseAuth mAuth;
 
+    private FloatingActionButton addPostBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mAuth = FirebaseAuth.getInstance();
 
         mainToolbar = (Toolbar)findViewById(R.id.main_toolbar);
         setSupportActionBar(mainToolbar);
-
         getSupportActionBar().setTitle("Kirangle Blog");
+
+
+        mAuth = FirebaseAuth.getInstance();
+        addPostBtn=findViewById(R.id.add_post_btn);
+        addPostBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent loginintent = new Intent(MainActivity.this , NewPostActivity.class);
+                startActivity(loginintent);
+
+            }
+        });
 
 
     }

@@ -141,10 +141,11 @@ public class SetupActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 final String user_name  = setupName.getText().toString();
-                setUpProgessBar.setVisibility(View.VISIBLE);
-                if(isChanged){
-                    if(!TextUtils.isEmpty(user_name) && mainImageURI!= null)
-                    {
+                if(!TextUtils.isEmpty(user_name) && mainImageURI!= null)
+                {
+                    setUpProgessBar.setVisibility(View.VISIBLE);
+                    if(isChanged){
+
                         final StorageReference image_path = storageReference.child("profile_images").child(user_id +".jpg");
                         image_path.putFile(mainImageURI).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
@@ -159,10 +160,10 @@ public class SetupActivity extends AppCompatActivity {
                             }
                         });
 
-                    }
-                }else{
-                    SaveToFirestore(null,user_name,user_id);
+                    }else{
+                        SaveToFirestore(null,user_name,user_id);
 
+                    }
                 }
             }
         });
