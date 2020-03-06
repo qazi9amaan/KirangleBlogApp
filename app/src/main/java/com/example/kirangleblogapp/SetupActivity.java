@@ -219,7 +219,7 @@ public class SetupActivity extends AppCompatActivity {
     private void SendToMain() {
         Intent main_intent = new Intent(SetupActivity.this, MainActivity.class );
         startActivity(main_intent);
-        finish();
+
     }
 
 
