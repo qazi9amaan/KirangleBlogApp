@@ -44,7 +44,7 @@ public class RegisterActivity  extends AppCompatActivity {
         regLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                SendToMain();
             }
         });
 

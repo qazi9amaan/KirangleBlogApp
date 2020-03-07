@@ -79,12 +79,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        FragmentManager fragmentManager =
-                getSupportFragmentManager();
-
-        fragmentManager.beginTransaction()
-                .replace(R.id.main_container, homeFragment)
-                .commit();
 
         mainbottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
