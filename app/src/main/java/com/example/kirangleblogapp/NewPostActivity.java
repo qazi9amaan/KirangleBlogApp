@@ -146,10 +146,10 @@ public class NewPostActivity extends AppCompatActivity {
 
                                                 // For uplaoding main image to database
                                                 Map<String,Object> postMap= new HashMap<>();
-                                                postMap.put("Image_url",download_uri);
+                                                postMap.put("image_url",download_uri);
                                                 postMap.put("desc",desc);
                                                 postMap.put("user_id",currentUserId);
-                                                postMap.put("thumbnail",download_thumbnail_uri);
+                                                postMap.put("image_thumb",download_thumbnail_uri);
                                                 postMap.put("timestamp",FieldValue.serverTimestamp());
 
 

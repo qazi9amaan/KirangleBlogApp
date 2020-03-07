@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottom_action_home"
+        android:enabled="true"
+        android:icon="@drawable/action_home_icon"
+        android:title="@string/bottom_nav_home" />
+    <item
+        android:id="@+id/bottom_action_notification"
+        android:icon="@drawable/action_home_notification"
+        android:title="@string/bottom_nav_text_notifications" />
+    <item
+        android:id="@+id/bottom_action_account"
+        android:icon="@drawable/action_home_account"
+        android:title="Account" />
+</menu>
