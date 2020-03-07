@@ -20,16 +20,15 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_post_btn"
-        android:layout_width="51dp"
-        android:layout_height="94dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="48dp"
-        android:clickable="true"
+        android:layout_width="70dp"
+        android:layout_height="76dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="44dp"
         android:focusable="true"
-        android:foreground="@color/whiteTransparentHint"
-        android:padding="25dp"
-        android:src="@android:drawable/ic_menu_add"
-        app:backgroundTint="#FFFFFF"
+        android:foreground="@android:drawable/ic_menu_edit"
+        android:foregroundGravity="center"
+        android:padding="2dp"
+        app:backgroundTint="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
