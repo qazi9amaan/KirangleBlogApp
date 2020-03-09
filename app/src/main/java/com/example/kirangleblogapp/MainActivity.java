@@ -62,52 +62,53 @@ public class MainActivity extends AppCompatActivity {
         firebaseFirestore = FirebaseFirestore.getInstance();
         addPostBtn=findViewById(R.id.add_post_btn);
 
-        // Initialising Fragments
-        homeFragment = new HomeFragment();
-        notificationFragment = new NotificationFragment();
-        accountFragment = new AccountFragment();
+        if(mAuth.getCurrentUser() != null) {
+            // Initialising Fragments
+            homeFragment = new HomeFragment();
+            notificationFragment = new NotificationFragment();
+            accountFragment = new AccountFragment();
+
+            // default home fragment
+            replaceFragment(homeFragment);
 
 
+            // Listeners
+            addPostBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent loginintent = new Intent(MainActivity.this, NewPostActivity.class);
+                    startActivity(loginintent);
 
-        // Listeners
-        addPostBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent loginintent = new Intent(MainActivity.this , NewPostActivity.class);
-                startActivity(loginintent);
-
-            }
-        });
-
-
-        mainbottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
-                switch (menuItem.getItemId())
-                {
-                    case R.id.bottom_action_home:
-                        replaceFragment(homeFragment);
-                        return true;
-
-                    case R.id.bottom_action_notification:
-                        replaceFragment(notificationFragment);
-                        return true;
-
-                    case R.id.bottom_action_account:
-                        replaceFragment(accountFragment);
-                        return true;
-
-
-                    default:
-                        replaceFragment(homeFragment);
-                        return  false;
                 }
+            });
 
 
-            }
-        });
+            mainbottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
+                    switch (menuItem.getItemId()) {
+                        case R.id.bottom_action_home:
+                            replaceFragment(homeFragment);
+                            return true;
+
+                        case R.id.bottom_action_notification:
+                            replaceFragment(notificationFragment);
+                            return true;
+
+                        case R.id.bottom_action_account:
+                            replaceFragment(accountFragment);
+                            return true;
+
+
+                        default:
+                            return false;
+                    }
+
+
+                }
+            });
+        }
 
     }
 

@@ -66,6 +66,7 @@ public class SetupActivity extends AppCompatActivity {
         setSupportActionBar(setuptoolbar);
         getSupportActionBar().setTitle("Account Setup");
 
+
         mAuth = FirebaseAuth.getInstance();
         storageReference = FirebaseStorage.getInstance().getReference();
         firebaseFirestore = FirebaseFirestore.getInstance();
