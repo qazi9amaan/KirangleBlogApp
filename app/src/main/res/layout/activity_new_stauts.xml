@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewStautsActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/new_status_toolbar"
+        android:layout_width="0dp"
+        android:layout_height="53dp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:padding="0dp"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleTextColor="#FFFFFF" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cardBackgroundColor="@color/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/new_status_toolbar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/user_image"
+                android:layout_width="175dp"
+                android:layout_height="160dp"
+                android:layout_marginTop="36dp"
+                android:src="@drawable/action_home_account"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"></de.hdodenhof.circleimageview.CircleImageView>
+
+            <EditText
+                android:id="@+id/user_post_status"
+                android:layout_width="0dp"
+                android:layout_height="284dp"
+                android:layout_marginStart="29dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="29dp"
+                android:background="@drawable/update_status_btn"
+                android:backgroundTint="#FFFFFF"
+                android:gravity="top"
+                android:hint="What's on your mind?"
+                android:inputType="textMultiLine"
+                android:paddingStart="20dp"
+                android:paddingTop="22dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/user_image" />
+
+            <ImageView
+                android:id="@+id/upload_user_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/user_post_status"
+                app:layout_constraintVertical_bias="0.392"
+                app:srcCompat="@mipmap/ic_launcher_save" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:indeterminate="true"
+                android:indeterminateTint="#FFFFFF"
+                android:progressTint="#FFFFFF"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="@+id/upload_user_status"
+                app:layout_constraintEnd_toEndOf="@+id/upload_user_status"
+                app:layout_constraintStart_toStartOf="@+id/upload_user_status"
+                app:layout_constraintTop_toTopOf="@+id/upload_user_status" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

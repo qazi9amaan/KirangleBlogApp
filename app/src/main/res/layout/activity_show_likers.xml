@@ -2,71 +2,72 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frame"
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.AccountFragment">
-
-    <!-- TODO: Update blank fragment layout -->
+    tools:context=".ShowLikersActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardView"
-            android:layout_width="409dp"
-            android:layout_height="129dp"
-            app:layout_constraintBottom_toTopOf="@+id/my_blog_list_view"
+            android:id="@+id/cardView4"
+            android:layout_width="412dp"
+            android:layout_height="125dp"
+            android:background="@color/colorPrimary"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
+
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/colorPrimary">
 
+
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/user_profile_image"
+                    android:id="@+id/blog_post_image"
                     android:layout_width="95dp"
                     android:layout_height="79dp"
                     android:layout_marginStart="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
                     android:padding="5dp"
                     android:src="@drawable/action_home_account"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.35"
                     tools:src="@drawable/action_home_account" />
 
                 <TextView
-                    android:id="@+id/user_profile_name"
+                    android:id="@+id/blog_post_desc"
                     android:layout_width="0dp"
-                    android:layout_height="59dp"
-                    android:layout_marginStart="2dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
                     android:gravity="fill"
-                    android:padding="18dp"
+                    android:padding="25dp"
                     android:textColor="#FFFFFF"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/user_profile_image"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintStart_toEndOf="@+id/blog_post_image"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.428" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/my_blog_list_view"
-            android:layout_width="match_parent"
+            android:id="@+id/likes_recycler_view"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView"
-            tools:layout_editor_absoluteX="16dp" />
-
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView4" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
 </FrameLayout>

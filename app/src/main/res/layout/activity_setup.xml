@@ -14,6 +14,7 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:subtitleTextColor="@color/common_google_signin_btn_text_dark_default"
@@ -24,11 +25,11 @@
         android:layout_width="243dp"
         android:layout_height="207dp"
         android:layout_marginTop="84dp"
-        android:src="@drawable/avatar"
+        android:src="@drawable/action_home_account"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/setuptoolbar"
-        tools:src="@drawable/avatar" />
+        tools:src="@drawable/action_home_account" />
 
     <EditText
         android:id="@+id/setupname"

@@ -13,8 +13,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NewPostActivity" android:parentActivityName=".MainActivity"></activity>
-        <activity android:name=".SetupActivity" android:parentActivityName=".MainActivity"/>
+        <activity android:name=".NewStautsActivity"></activity>
+        <activity android:name=".ShowLikersActivity" />
+        <activity
+            android:name=".NewPostActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".SetupActivity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".RegisterActivity" />
         <activity
             android:name=".LoginActivity"

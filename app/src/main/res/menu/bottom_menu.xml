@@ -9,8 +9,8 @@
         android:title="@string/bottom_nav_home" />
     <item
         android:id="@+id/bottom_action_notification"
-        android:icon="@drawable/action_home_notification"
-        android:title="@string/bottom_nav_text_notifications" />
+        android:icon="@drawable/ic_action_feed"
+        android:title="Feed" />
     <item
         android:id="@+id/bottom_action_account"
         android:icon="@drawable/action_home_account"

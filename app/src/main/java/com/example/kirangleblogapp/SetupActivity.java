@@ -98,7 +98,7 @@ public class SetupActivity extends AppCompatActivity {
                                 setupName.setText(name);
 
                                 RequestOptions rplaceholder = new RequestOptions();
-                                rplaceholder.placeholder(R.drawable.avatar);
+                                rplaceholder.placeholder(R.drawable.action_add_post);
 
                                 Glide.with(SetupActivity.this).setDefaultRequestOptions(rplaceholder).load(image).into(setupImage);
 
